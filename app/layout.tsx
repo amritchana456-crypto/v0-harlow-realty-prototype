@@ -1,15 +1,51 @@
-import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
+import { Lexend_Deca } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const lexendDeca = Lexend_Deca({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-lexend',
+})
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Harlow Realty | Premium Real Estate in Toronto & GTA',
+  description:
+    'Discover your dream home with Harlow Realty. Premium real estate services in Toronto and the Greater Toronto Area. Expert agents, luxury properties, and personalized service.',
   generator: 'v0.app',
+  keywords: [
+    'Toronto real estate',
+    'GTA homes',
+    'luxury properties',
+    'real estate agents',
+    'Harlow Realty',
+    'buy home Toronto',
+    'sell home Toronto',
+  ],
+  authors: [{ name: 'Harlow Realty' }],
+  creator: 'Harlow Realty',
+  publisher: 'Harlow Realty',
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: 'Harlow Realty | Premium Real Estate in Toronto & GTA',
+    description:
+      'Discover your dream home with Harlow Realty. Premium real estate services in Toronto and the Greater Toronto Area.',
+    url: 'https://harlowrealty.ca',
+    siteName: 'Harlow Realty',
+    locale: 'en_CA',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Harlow Realty | Premium Real Estate in Toronto & GTA',
+    description:
+      'Discover your dream home with Harlow Realty. Premium real estate services in Toronto and the Greater Toronto Area.',
+  },
   icons: {
     icon: [
       {
@@ -29,13 +65,19 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  themeColor: '#7EC8D8',
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={lexendDeca.variable}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
