@@ -1,8 +1,8 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import { SectionWrapper } from '@/components/ui/section-wrapper'
 import { AgentCard } from '@/components/ui/agent-card'
-import { motion } from 'framer-motion'
 
 const agents = [
   {
