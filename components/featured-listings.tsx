@@ -11,7 +11,7 @@ const listings = [
     beds: 4,
     baths: 3,
     sqft: '3,200',
-    image: 'https://placehold.co/800x450/E8F8FB/4E8E9D?text=Lakeshore+Home',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=450&fit=crop',
   },
   {
     address: '456 King Street E, Toronto',
@@ -19,7 +19,7 @@ const listings = [
     beds: 3,
     baths: 2,
     sqft: '2,100',
-    image: 'https://placehold.co/800x450/E8F8FB/4E8E9D?text=King+Street+Condo',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=450&fit=crop',
   },
   {
     address: '789 Trafalgar Rd, Oakville',
@@ -27,7 +27,7 @@ const listings = [
     beds: 5,
     baths: 4,
     sqft: '4,500',
-    image: 'https://placehold.co/800x450/E8F8FB/4E8E9D?text=Oakville+Estate',
+    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=450&fit=crop',
   },
   {
     address: '321 Dundas St W, Mississauga',
@@ -35,7 +35,7 @@ const listings = [
     beds: 4,
     baths: 3,
     sqft: '2,800',
-    image: 'https://placehold.co/800x450/E8F8FB/4E8E9D?text=Mississauga+Home',
+    image: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=800&h=450&fit=crop',
   },
 ]
 
