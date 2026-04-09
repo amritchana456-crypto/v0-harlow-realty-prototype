@@ -4,63 +4,80 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Harlow Realty Brand Colors */
-  --harlow-primary: #7EC8D8;
-  --harlow-primary-light: #E8F8FB;
-  --harlow-primary-medium: #B8E4F0;
-  --harlow-primary-dark: #6FAFBE;
-  --harlow-primary-darker: #4E8E9D;
+  /* Harlow Realty V2 Brand Colors - Evergreen & Almond */
+  --harlow-evergreen: #043222;
+  --harlow-evergreen-light: #0a4a33;
+  --harlow-almond: #F6E9D9;
+  --harlow-almond-light: #FBF5EF;
+  --harlow-almond-dark: #E8D5C0;
   --harlow-white: #FFFFFF;
   --harlow-black: #0A0A0A;
+  --harlow-text-dark: #1a1a1a;
+  --harlow-text-muted: #5a5a5a;
 
-  /* Shadcn tokens mapped to Harlow palette */
-  --background: oklch(0.97 0.01 200);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.75 0.08 200);
-  --primary-foreground: oklch(0.145 0 0);
-  --secondary: oklch(0.97 0.01 200);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0.01 200);
-  --accent-foreground: oklch(0.205 0 0);
+  /* Glass morphism colors */
+  --glass-almond: rgba(246, 233, 217, 0.18);
+  --glass-almond-solid: rgba(246, 233, 217, 0.85);
+  --glass-evergreen: rgba(4, 50, 34, 0.12);
+  --glass-white: rgba(255, 255, 255, 0.15);
+
+  /* Shadcn tokens mapped to Harlow V2 palette */
+  --background: oklch(0.97 0.015 75);
+  --foreground: oklch(0.15 0.02 160);
+  --card: oklch(0.98 0.01 75);
+  --card-foreground: oklch(0.15 0.02 160);
+  --popover: oklch(0.98 0.01 75);
+  --popover-foreground: oklch(0.15 0.02 160);
+  --primary: oklch(0.25 0.06 160);
+  --primary-foreground: oklch(0.95 0.015 75);
+  --secondary: oklch(0.93 0.02 75);
+  --secondary-foreground: oklch(0.25 0.06 160);
+  --muted: oklch(0.93 0.015 75);
+  --muted-foreground: oklch(0.45 0.01 75);
+  --accent: oklch(0.93 0.02 75);
+  --accent-foreground: oklch(0.25 0.06 160);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.75 0.08 200);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --border: oklch(0.88 0.02 75);
+  --input: oklch(0.88 0.02 75);
+  --ring: oklch(0.25 0.06 160);
+  --chart-1: oklch(0.35 0.08 160);
+  --chart-2: oklch(0.6 0.118 75);
+  --chart-3: oklch(0.45 0.07 160);
+  --chart-4: oklch(0.75 0.12 75);
+  --chart-5: oklch(0.55 0.1 160);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.97 0.015 75);
+  --sidebar-foreground: oklch(0.15 0.02 160);
+  --sidebar-primary: oklch(0.25 0.06 160);
+  --sidebar-primary-foreground: oklch(0.97 0.015 75);
+  --sidebar-accent: oklch(0.93 0.02 75);
+  --sidebar-accent-foreground: oklch(0.25 0.06 160);
+  --sidebar-border: oklch(0.88 0.02 75);
+  --sidebar-ring: oklch(0.45 0.04 160);
 }
 
 @theme inline {
-  --font-sans: 'Lexend Deca', 'Lexend Deca Fallback', sans-serif;
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-sans: 'Poppins', 'Poppins Fallback', sans-serif;
+  --font-serif: 'Libre Baskerville', 'Libre Baskerville Fallback', serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
 
-  /* Harlow brand colors for Tailwind */
-  --color-harlow-primary: var(--harlow-primary);
-  --color-harlow-primary-light: var(--harlow-primary-light);
-  --color-harlow-primary-medium: var(--harlow-primary-medium);
-  --color-harlow-primary-dark: var(--harlow-primary-dark);
-  --color-harlow-primary-darker: var(--harlow-primary-darker);
+  /* Harlow V2 brand colors for Tailwind */
+  --color-harlow-evergreen: var(--harlow-evergreen);
+  --color-harlow-evergreen-light: var(--harlow-evergreen-light);
+  --color-harlow-almond: var(--harlow-almond);
+  --color-harlow-almond-light: var(--harlow-almond-light);
+  --color-harlow-almond-dark: var(--harlow-almond-dark);
   --color-harlow-white: var(--harlow-white);
   --color-harlow-black: var(--harlow-black);
+  --color-harlow-text-dark: var(--harlow-text-dark);
+  --color-harlow-text-muted: var(--harlow-text-muted);
+
+  /* Glass morphism utilities */
+  --color-glass-almond: var(--glass-almond);
+  --color-glass-almond-solid: var(--glass-almond-solid);
+  --color-glass-evergreen: var(--glass-evergreen);
+  --color-glass-white: var(--glass-white);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -105,12 +122,66 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply text-harlow-black antialiased;
-    background: linear-gradient(180deg, #E8F8FB 0%, #B8E4F0 100%);
+    @apply text-harlow-text-dark antialiased;
+    background: linear-gradient(180deg, var(--harlow-almond-light) 0%, var(--harlow-almond) 50%, var(--harlow-almond-dark) 100%);
     background-attachment: fixed;
     min-height: 100vh;
   }
   html {
     scroll-behavior: smooth;
+  }
+}
+
+/* Glass morphism utilities */
+@layer utilities {
+  .glass-almond {
+    background: var(--glass-almond);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .glass-almond-solid {
+    background: var(--glass-almond-solid);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .glass-evergreen {
+    background: var(--glass-evergreen);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .glass-white {
+    background: var(--glass-white);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  /* Button shimmer effect - subtle and professional */
+  .btn-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.15),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+  .btn-shimmer:hover::after {
+    left: 100%;
+  }
+
+  /* Accent font class for Libre Baskerville */
+  .font-accent {
+    font-family: var(--font-serif);
+    font-style: italic;
   }
 }

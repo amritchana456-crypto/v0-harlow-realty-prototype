@@ -13,7 +13,7 @@ const stats = [
 
 function useCountUp(
   end: number,
-  duration: number = 1500,
+  duration: number = 1200,
   shouldStart: boolean = false
 ) {
   const [count, setCount] = useState(0)
@@ -28,7 +28,7 @@ function useCountUp(
       if (!startTime) startTime = timestamp
       const progress = Math.min((timestamp - startTime) / duration, 1)
 
-      // easeOut curve
+      // easeOut curve for smooth deceleration
       const easeOut = 1 - Math.pow(1 - progress, 3)
       setCount(Math.floor(easeOut * end))
 
@@ -51,35 +51,25 @@ function StatItem({
   value,
   suffix,
   label,
-  index,
   shouldAnimate,
 }: {
   value: number
   suffix: string
   label: string
-  index: number
   shouldAnimate: boolean
 }) {
-  const count = useCountUp(value, 1500, shouldAnimate)
+  const count = useCountUp(value, 1200, shouldAnimate)
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{
-        duration: 0.7,
-        ease: [0.22, 1, 0.36, 1],
-        delay: index * 0.1,
-      }}
-      className="text-center p-6"
-    >
-      <div className="text-4xl md:text-5xl font-semibold text-harlow-primary-darker mb-2">
+    <div className="flex flex-col items-center justify-center py-6 px-4 md:py-8 md:px-6">
+      <div className="text-3xl md:text-4xl lg:text-5xl font-semibold text-harlow-evergreen mb-1">
         {shouldAnimate ? count : 0}
-        <span className="text-harlow-primary">{suffix}</span>
+        <span className="text-harlow-evergreen/70">{suffix}</span>
       </div>
-      <p className="text-base text-harlow-black/70 font-medium">{label}</p>
-    </motion.div>
+      <p className="text-sm md:text-base text-harlow-text-muted font-medium text-center">
+        {label}
+      </p>
+    </div>
   )
 }
 
@@ -88,24 +78,39 @@ export function Stats() {
   const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   return (
-    <SectionWrapper className="py-16 md:py-20">
-      <div
+    <SectionWrapper className="py-12 md:py-16">
+      <motion.div
         ref={ref}
-        className="bg-white/60 backdrop-blur-sm rounded-3xl border border-white/40 shadow-lg"
+        initial={{ opacity: 0, y: 32 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="max-w-5xl mx-auto"
       >
-        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-gray-100">
-          {stats.map((stat, index) => (
-            <StatItem
-              key={stat.label}
-              value={stat.value}
-              suffix={stat.suffix}
-              label={stat.label}
-              index={index}
-              shouldAnimate={isInView}
-            />
-          ))}
+        {/* Horizontal Pill Container */}
+        <div className="glass-almond-solid rounded-full border border-harlow-almond-dark/20 shadow-lg overflow-hidden">
+          {/* Desktop: 4 in a row | Mobile: 2x2 grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4">
+            {stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                className={`
+                  ${index < stats.length - 1 ? 'lg:border-r lg:border-harlow-almond-dark/15' : ''}
+                  ${index < 2 ? 'border-b lg:border-b-0 border-harlow-almond-dark/15' : ''}
+                  ${index % 2 === 0 ? 'border-r lg:border-r-0 border-harlow-almond-dark/15' : ''}
+                `}
+              >
+                <StatItem
+                  value={stat.value}
+                  suffix={stat.suffix}
+                  label={stat.label}
+                  shouldAnimate={isInView}
+                />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </motion.div>
     </SectionWrapper>
   )
 }

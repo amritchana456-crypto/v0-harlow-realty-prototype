@@ -1,13 +1,21 @@
 import type { Metadata, Viewport } from 'next'
-import { Lexend_Deca } from 'next/font/google'
+import { Poppins, Libre_Baskerville } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const lexendDeca = Lexend_Deca({
+const poppins = Poppins({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
-  variable: '--font-lexend',
+  variable: '--font-poppins',
+})
+
+const libreBaskerville = Libre_Baskerville({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-libre',
 })
 
 export const metadata: Metadata = {
@@ -66,7 +74,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#7EC8D8',
+  themeColor: '#043222',
   width: 'device-width',
   initialScale: 1,
 }
@@ -77,7 +85,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={lexendDeca.variable}>
+    <html lang="en" className={`${poppins.variable} ${libreBaskerville.variable}`}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

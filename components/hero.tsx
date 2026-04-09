@@ -1,80 +1,78 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { Button } from '@/components/ui/button'
 
 export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[85vh] flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80"
-          alt="Beautiful modern home exterior with landscaped garden"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        {/* Overlay Gradient */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80"
+        >
+          <source
+            src="https://videos.pexels.com/video-files/5644166/5644166-uhd_2732_1440_25fps.mp4"
+            type="video/mp4"
+          />
+        </video>
+        {/* Warm cinematic overlay */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(232, 248, 251, 0.85) 0%, rgba(184, 228, 240, 0.75) 100%)',
+              'linear-gradient(180deg, rgba(246, 233, 217, 0.4) 0%, rgba(246, 233, 217, 0.2) 50%, rgba(246, 233, 217, 0.5) 100%)',
           }}
         />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-8 text-center pt-32">
+      {/* Hero Content - Delayed reveal at 5 seconds */}
+      <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-8 text-center">
         <motion.h1
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl md:text-5xl lg:text-6xl font-semibold text-harlow-black leading-tight mb-6 text-balance"
+          transition={{
+            duration: 1,
+            ease: [0.22, 1, 0.36, 1],
+            delay: 5,
+          }}
+          className="text-4xl md:text-5xl lg:text-6xl font-semibold text-harlow-evergreen leading-tight mb-6 text-balance"
         >
-          Find Your Perfect Home in Toronto
+          Welcome to Toronto&apos;s Premium{' '}
+          <span className="font-accent text-harlow-evergreen">Home</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-          className="text-lg md:text-xl text-harlow-black/70 max-w-2xl mx-auto mb-10 leading-relaxed text-pretty"
+          transition={{
+            duration: 1,
+            ease: [0.22, 1, 0.36, 1],
+            delay: 5.2,
+          }}
+          className="text-lg md:text-xl text-harlow-text-dark/80 max-w-2xl mx-auto leading-relaxed text-pretty"
         >
-          Experience premium real estate services with Harlow Realty. Our expert
-          team is dedicated to helping you discover the home of your dreams in
-          Toronto and the Greater Toronto Area.
+          Discover exceptional properties with personalized service from our
+          dedicated team of real estate professionals.
         </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <Button
-            asChild
-            size="lg"
-            className="bg-harlow-primary hover:bg-harlow-primary-dark text-harlow-black font-medium px-8 py-6 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            <a href="#properties">View Properties</a>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="border-harlow-primary-darker text-harlow-primary-darker hover:bg-harlow-primary-light font-medium px-8 py-6 text-base rounded-xl transition-all duration-300"
-          >
-            <a href="#contact">Get in Touch</a>
-          </Button>
-        </motion.div>
       </div>
+
+      {/* Atmospheric fog separator at bottom */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-48 z-20 pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(180deg, transparent 0%, rgba(246, 233, 217, 0.3) 30%, rgba(246, 233, 217, 0.7) 70%, var(--harlow-almond) 100%)',
+        }}
+        aria-hidden="true"
+      />
     </section>
   )
 }
