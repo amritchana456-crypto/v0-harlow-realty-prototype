@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { SectionWrapper } from '@/components/ui/section-wrapper'
 import { ListingCard } from '@/components/ui/listing-card'
@@ -40,8 +41,22 @@ const listings = [
 ]
 
 export function FeaturedListings() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % listings.length)
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const visibleListings = [
+    listings[currentIndex],
+    listings[(currentIndex + 1) % listings.length],
+  ]
+
   return (
-    <SectionWrapper id="properties">
+    <SectionWrapper id="properties" bgColor="cream">
       <motion.div
         initial={{ opacity: 0, y: 32 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -59,8 +74,12 @@ export function FeaturedListings() {
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-        {listings.map((listing, index) => (
-          <ListingCard key={listing.address} listing={listing} index={index} />
+        {visibleListings.map((listing, index) => (
+          <ListingCard
+            key={listing.address}
+            listing={listing}
+            index={index}
+          />
         ))}
       </div>
     </SectionWrapper>

@@ -34,13 +34,13 @@ export function Navbar() {
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 2 }}
         className={cn(
           'fixed top-6 left-6 right-6 z-50 transition-all duration-300',
-          'backdrop-blur-md border border-white/15 rounded-2xl shadow-lg',
+          'backdrop-blur-xl border border-white/25 rounded-3xl shadow-xl',
           isScrolled
-            ? 'bg-white/12 backdrop-blur-lg'
-            : 'bg-white/8 backdrop-blur-md'
+            ? 'bg-white/15 backdrop-blur-2xl'
+            : 'bg-white/12 backdrop-blur-xl'
         )}
       >
         <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
@@ -100,14 +100,14 @@ export function Navbar() {
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="fixed top-24 left-6 right-6 z-[60] md:hidden"
             >
-              <nav className="backdrop-blur-lg bg-white/90 border border-white/20 rounded-2xl shadow-xl p-6">
+              <nav className="backdrop-blur-2xl bg-white/15 border border-white/25 rounded-3xl shadow-2xl p-6">
                 <ul className="flex flex-col gap-4">
                   {navLinks.map((link) => (
                     <li key={link.href}>
                       <a
                         href={link.href}
                         onClick={handleLinkClick}
-                        className="block py-3 px-4 text-base font-medium text-harlow-black/80 hover:text-harlow-primary-darker hover:bg-harlow-primary-light/50 rounded-xl transition-colors duration-200"
+                        className="block py-3 px-4 text-base font-medium text-harlow-black/80 hover:text-harlow-primary-darker hover:bg-white/10 rounded-xl transition-colors duration-200"
                       >
                         {link.label}
                       </a>

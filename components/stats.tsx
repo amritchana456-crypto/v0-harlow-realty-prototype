@@ -28,7 +28,6 @@ function useCountUp(
       if (!startTime) startTime = timestamp
       const progress = Math.min((timestamp - startTime) / duration, 1)
 
-      // easeOut curve
       const easeOut = 1 - Math.pow(1 - progress, 3)
       setCount(Math.floor(easeOut * end))
 
@@ -72,13 +71,15 @@ function StatItem({
         ease: [0.22, 1, 0.36, 1],
         delay: index * 0.1,
       }}
-      className="text-center p-6"
+      className="bg-[#043222] rounded-2xl p-6 md:p-8 text-center shadow-lg"
     >
-      <div className="text-4xl md:text-5xl font-semibold text-harlow-primary-darker mb-2">
-        {shouldAnimate ? count : 0}
-        <span className="text-harlow-primary">{suffix}</span>
+      <div className="text-4xl md:text-5xl font-semibold mb-2">
+        <span className="text-[#F6E9D9]">
+          {shouldAnimate ? count : 0}
+          {suffix}
+        </span>
       </div>
-      <p className="text-base text-harlow-black/70 font-medium">{label}</p>
+      <p className="text-[#F6E9D9] text-base font-medium">{label}</p>
     </motion.div>
   )
 }
@@ -88,23 +89,18 @@ export function Stats() {
   const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   return (
-    <SectionWrapper className="py-16 md:py-20">
-      <div
-        ref={ref}
-        className="bg-white/60 backdrop-blur-sm rounded-3xl border border-white/40 shadow-lg"
-      >
-        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-gray-100">
-          {stats.map((stat, index) => (
-            <StatItem
-              key={stat.label}
-              value={stat.value}
-              suffix={stat.suffix}
-              label={stat.label}
-              index={index}
-              shouldAnimate={isInView}
-            />
-          ))}
-        </div>
+    <SectionWrapper ref={ref} bgColor="evergreen">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {stats.map((stat, index) => (
+          <StatItem
+            key={stat.label}
+            value={stat.value}
+            suffix={stat.suffix}
+            label={stat.label}
+            index={index}
+            shouldAnimate={isInView}
+          />
+        ))}
       </div>
     </SectionWrapper>
   )

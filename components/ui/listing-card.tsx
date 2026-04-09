@@ -54,23 +54,23 @@ export function ListingCard({ listing, index, className }: ListingCardProps) {
         </div>
       </div>
 
-      {/* Content */}
-      <div className="p-6">
-        <h3 className="text-lg font-semibold text-harlow-black mb-3 line-clamp-1">
+      {/* Content - Glass Morphism Panel */}
+      <div className="backdrop-blur-lg bg-white/15 border-t border-white/20 p-6">
+        <h3 className="text-lg font-semibold text-[#F6E9D9] mb-3 line-clamp-1">
           {listing.address}
         </h3>
 
-        <div className="flex items-center gap-6 text-sm text-harlow-black/60">
+        <div className="flex items-center gap-6 text-sm text-[#F6E9D9]">
           <span className="flex items-center gap-2">
-            <Bed size={18} className="text-harlow-primary" />
+            <Bed size={18} className="text-[#F6E9D9]/80" />
             {listing.beds} Beds
           </span>
           <span className="flex items-center gap-2">
-            <Bath size={18} className="text-harlow-primary" />
+            <Bath size={18} className="text-[#F6E9D9]/80" />
             {listing.baths} Baths
           </span>
           <span className="flex items-center gap-2">
-            <Square size={18} className="text-harlow-primary" />
+            <Square size={18} className="text-[#F6E9D9]/80" />
             {listing.sqft} sqft
           </span>
         </div>

@@ -86,8 +86,18 @@ export function Testimonials() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [goToPrev, goToNext])
 
+  useEffect(() => {
+    const autoplayInterval = setInterval(() => {
+      setCurrentIndex((prev) => {
+        const nextIndex = prev + 1
+        return nextIndex > maxIndex ? 0 : nextIndex
+      })
+    }, 6000)
+    return () => clearInterval(autoplayInterval)
+  }, [maxIndex])
+
   return (
-    <SectionWrapper id="testimonials">
+    <SectionWrapper id="testimonials" bgColor="evergreen">
       <motion.div
         initial={{ opacity: 0, y: 32 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -95,13 +105,9 @@ export function Testimonials() {
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className="text-center mb-12 md:mb-16"
       >
-        <h2 className="text-3xl md:text-4xl font-semibold text-harlow-black mb-4">
+        <h2 className="text-3xl md:text-4xl font-semibold text-[#F6E9D9] mb-4">
           What Our Clients Say
         </h2>
-        <p className="text-lg text-harlow-black/70 max-w-2xl mx-auto">
-          Hear from our satisfied clients about their experience working with
-          Harlow Realty.
-        </p>
       </motion.div>
 
       {/* Carousel Container */}
@@ -114,13 +120,13 @@ export function Testimonials() {
             onClick={goToPrev}
             disabled={!canGoPrev}
             className={cn(
-              'h-12 w-12 rounded-full border-harlow-primary/30 bg-white/80 backdrop-blur-sm shadow-md',
-              'hover:bg-harlow-primary-light hover:border-harlow-primary transition-all',
+              'h-12 w-12 rounded-full border-[#F6E9D9]/30 bg-[#F6E9D9]/15 backdrop-blur-sm shadow-md',
+              'hover:bg-[#F6E9D9]/25 hover:border-[#F6E9D9] transition-all',
               'disabled:opacity-40 disabled:cursor-not-allowed'
             )}
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="h-6 w-6 text-harlow-primary-darker" />
+            <ChevronLeft className="h-6 w-6 text-[#F6E9D9]" />
           </Button>
         </div>
 
@@ -131,13 +137,13 @@ export function Testimonials() {
             onClick={goToNext}
             disabled={!canGoNext}
             className={cn(
-              'h-12 w-12 rounded-full border-harlow-primary/30 bg-white/80 backdrop-blur-sm shadow-md',
-              'hover:bg-harlow-primary-light hover:border-harlow-primary transition-all',
+              'h-12 w-12 rounded-full border-[#F6E9D9]/30 bg-[#F6E9D9]/15 backdrop-blur-sm shadow-md',
+              'hover:bg-[#F6E9D9]/25 hover:border-[#F6E9D9] transition-all',
               'disabled:opacity-40 disabled:cursor-not-allowed'
             )}
             aria-label="Next testimonial"
           >
-            <ChevronRight className="h-6 w-6 text-harlow-primary-darker" />
+            <ChevronRight className="h-6 w-6 text-[#F6E9D9]" />
           </Button>
         </div>
 
@@ -148,7 +154,7 @@ export function Testimonials() {
             animate={{
               x: `calc(-${currentIndex * (100 / visibleCount)}% - ${currentIndex * 24 / visibleCount}px)`,
             }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           >
             {testimonials.map((testimonial, index) => (
               <motion.div
@@ -180,13 +186,13 @@ export function Testimonials() {
             onClick={goToPrev}
             disabled={!canGoPrev}
             className={cn(
-              'h-12 w-12 rounded-full border-harlow-primary/30 bg-white/80',
-              'hover:bg-harlow-primary-light hover:border-harlow-primary transition-all',
+              'h-12 w-12 rounded-full border-[#F6E9D9]/30 bg-[#F6E9D9]/15',
+              'hover:bg-[#F6E9D9]/25 hover:border-[#F6E9D9] transition-all',
               'disabled:opacity-40 disabled:cursor-not-allowed'
             )}
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="h-6 w-6 text-harlow-primary-darker" />
+            <ChevronLeft className="h-6 w-6 text-[#F6E9D9]" />
           </Button>
           <Button
             variant="outline"
@@ -194,13 +200,13 @@ export function Testimonials() {
             onClick={goToNext}
             disabled={!canGoNext}
             className={cn(
-              'h-12 w-12 rounded-full border-harlow-primary/30 bg-white/80',
-              'hover:bg-harlow-primary-light hover:border-harlow-primary transition-all',
+              'h-12 w-12 rounded-full border-[#F6E9D9]/30 bg-[#F6E9D9]/15',
+              'hover:bg-[#F6E9D9]/25 hover:border-[#F6E9D9] transition-all',
               'disabled:opacity-40 disabled:cursor-not-allowed'
             )}
             aria-label="Next testimonial"
           >
-            <ChevronRight className="h-6 w-6 text-harlow-primary-darker" />
+            <ChevronRight className="h-6 w-6 text-[#F6E9D9]" />
           </Button>
         </div>
 
@@ -213,8 +219,8 @@ export function Testimonials() {
               className={cn(
                 'w-2 h-2 rounded-full transition-all duration-300',
                 index === currentIndex
-                  ? 'w-6 bg-harlow-primary'
-                  : 'bg-harlow-primary/30 hover:bg-harlow-primary/50'
+                  ? 'w-6 bg-[#F6E9D9]'
+                  : 'bg-[#F6E9D9]/30 hover:bg-[#F6E9D9]/50'
               )}
               aria-label={`Go to testimonial ${index + 1}`}
             />

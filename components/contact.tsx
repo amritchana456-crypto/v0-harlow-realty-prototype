@@ -79,7 +79,7 @@ export function Contact() {
   }
 
   return (
-    <SectionWrapper id="contact">
+    <SectionWrapper id="contact" bgColor="cream">
       <div className="max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 32 }}
